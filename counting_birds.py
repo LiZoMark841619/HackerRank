@@ -4,7 +4,7 @@ import sys
 def migratoryBirds(arr):
     count_types_of_birds = Counter(arr)
     max_value = max(count_types_of_birds.values())
-    return min([key for key in count_types_of_birds if count_types_of_birds[key] == max_value])
+    return min(key for key in count_types_of_birds if count_types_of_birds[key] == max_value)
 
 if __name__ == '__main__':
     fptr = sys.stdout
