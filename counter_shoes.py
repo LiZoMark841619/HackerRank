@@ -16,7 +16,6 @@ def get_a_valid_list(length_of_list: int, min_value: int, max_value: int) -> lis
             values = list(map(int, input(f'Enter a value from ({min_value} to {max_value}) {length_of_list} times! ').split()))
             if len(values) != length_of_list:
                 print(f'Invalid number of elements! It must contain {length_of_list} values! Try again!')
-                continue
             else:
                 for value in values:
                     idx = values.index(value)
@@ -39,7 +38,7 @@ if __name__ == '__main__':
     for _ in range(number_of_customs):
         size, price = map(int, input('Preferred size and selling price! ').split())
         customs_inquiries[size] = price
-        if size in list(shoes_available.keys()) and shoes_available[size] != 0:
+        if size in shoes_available and shoes_available[size] != 0:
             total_revenue += price
             shoes_available[size] -= 1
     print(total_revenue)
