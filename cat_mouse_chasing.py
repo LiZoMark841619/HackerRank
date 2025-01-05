@@ -7,10 +7,7 @@ if __name__ == '__main__':
     fptr = sys.stdout
     q = int(input())
 
-    for q_itr in range(q):
-        xyz = input().split()
-        x = int(xyz[0])
-        y = int(xyz[1])
-        z = int(xyz[2])
+    for _ in range(q):
+        x, y, z = map(int, input().split())
         result = catAndMouse(x, y, z)
         fptr.write(str(result) + '\n')
