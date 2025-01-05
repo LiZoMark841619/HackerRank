@@ -1,6 +1,6 @@
 from itertools import combinations
 
-def divisibleSumPairs(k: int, ar: list) -> len:
+def divisibleSumPairs(k: int, ar: list) -> int:
     combination_list = combinations(ar, 2)
     return len(list(filter(lambda x: (x[0]+x[1])% k == 0, combination_list)))  
         

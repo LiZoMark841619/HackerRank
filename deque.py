@@ -21,7 +21,7 @@ def make_actions(some_deque: deque) -> dict:
 
 if __name__ == '__main__':
     N = get_valid_number(0, 101)
-    d = deque()
+    d: deque[int] = deque()
     actions = make_actions(d)
 
     for _ in range(N):
