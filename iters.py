@@ -27,3 +27,4 @@ for value in result:
 
 final = counter / len(result)
 print(f'{final}')
+#print(result)
