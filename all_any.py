@@ -3,7 +3,7 @@ if __name__ == '__main__':
     while N not in range(1, 101):
         N += int(input())
             
-    some_list = []
+    some_list: list[int] = []
     while len(some_list) != N: 
         some_list.extend(map(int, input().split()))
 

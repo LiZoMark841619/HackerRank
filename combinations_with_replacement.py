@@ -2,9 +2,10 @@ from itertools import combinations_with_replacement
 
 if __name__ == '__main__':
     while True:
-        S, k = input().upper().split()
+        inputs = list(input().upper().split())
+        S = list(inputs[0])
         try:
-            k = int(k)
+            k = int(inputs[1])
             if k in range(1, len(S)+1):
                 combinations_ = combinations_with_replacement(sorted(list(S)), k)
                 for value in combinations_:
