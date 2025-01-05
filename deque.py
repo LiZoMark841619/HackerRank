@@ -6,6 +6,8 @@ def get_valid_number(min_value: int, max_value: int) -> int:
             value = int(input())
             if min_value < value < max_value:
                 return value
+            else:
+                print('Invalid range! Try again! ')
         except ValueError:
             print('Invalid value! Only integer is allowed! ')
 
@@ -26,8 +28,15 @@ if __name__ == '__main__':
         while True:
             command_input = input().split()
             command = command_input[0]
-            args = map(int, command_input[1:])
+            try:
+                args = map(int, command_input[1:])
+            except ValueError:
+                print('Only integer is allowed! Try again! ')
             if command in actions.keys():
-                actions[command](*args)
-                break
+                try:
+                    actions[command](*args)
+                    break
+                except TypeError:
+                    print('Invalid argument! Try again! ')
+            print('Invalid command! Try again!')
     print(*d)
