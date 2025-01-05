@@ -1,10 +1,10 @@
 from string import ascii_lowercase, ascii_uppercase
 
-username = list(ascii_lowercase+ascii_uppercase) + [str(value) for value in range(10)] + ['_', '-']
+username = ascii_lowercase+ascii_uppercase+'0123456789_-'
 website = username[:-2]
 extension = website[:-10]
 
-def filtering(valid_chars: list[str], unexamined_string: str) -> str:
+def filtering(valid_chars: str, unexamined_string: str) -> str:
     return ''.join(list(filter(lambda x: x in valid_chars, unexamined_string)))
 
 def fun(s: str) -> bool:
@@ -14,10 +14,9 @@ def fun(s: str) -> bool:
     if '.' not in rest[-4:]:
         return False
     web, ext = rest.split('.')
-    f_user, f_web, f_ext = filtering(username, user), filtering(website, web), filtering(extension, ext)
-    return f_user == user and f_web == web and f_ext == ext and len(ext) <= 3
-
-def filter_mail(emails: list[str]) -> list:
+    return filtering(username, user) == user and filtering(website, web) == web and filtering(extension, ext) == ext and len(ext) <= 3
+    
+def filter_mail(emails):
     return list(filter(fun, emails))
 
 if __name__ == '__main__':
