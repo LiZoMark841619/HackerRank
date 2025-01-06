@@ -2,7 +2,7 @@ if __name__ == '__main__':
     while True:
         try:
             N, X = map(int, input().split())
-            if N and X in range(0, 100):
+            if N and X in range(100):
                 break
         except ValueError:
             print('Invalid value! Only integer is allowed! ')
