@@ -5,7 +5,7 @@ N = 0
 while N not in range(1, 11):
     N += int(input())
 
-string_list = []
+string_list: list[str] = []
 while len(string_list) != N:
     for value in input().split():
         if value not in ascii_lowercase:
@@ -16,15 +16,14 @@ K = 0
 while K not in range(1, N+1):
     K += int(input())
 
-idxs = range(1, len(string_list) + 1)
-result = list(combinations(idxs, K))
-counter = 0
-for value in result:
-    for val in value:
-        if string_list[val-1] == 'a':
-            counter += 1
-            break
+total_combinations = 0
+target_combinations = 0
 
-final = counter / len(result)
+for comb in combinations(string_list, K):
+    total_combinations += 1
+    if 'a' in comb:
+        target_combinations +=1
+        
+final = target_combinations / total_combinations
 print(f'{final}')
 #print(result)

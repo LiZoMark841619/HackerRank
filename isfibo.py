@@ -6,11 +6,9 @@ def fib_making(n: int) -> list:
         i += 1
     return fiblist
         
-def isFibo(fibolist: list, n: int) -> str:
+def isFibo(fibolist: list, n: int) -> None:
     if n == fibolist[-1]:
         print('IsFibo')
-    elif n in [0, 1]:
-        print('IsNotFibo')
     else:
         print('IsNotFibo')
         
