@@ -1,11 +1,27 @@
 if __name__ == '__main__':
     N = 0
-    while N not in range(1, 101):
-        N += int(input())
+    while True:
+        value = input('Set a value between 1 and 1000! ')
+        try:
+            int_value = int(value)
+            if int_value in range(1, 1001):
+                N += int_value
+                break
+            else:
+                print('Out of range! ')
+        except ValueError:
+            print('Only integer is allowed! Try again! ')
             
     some_list: list[int] = []
-    while len(some_list) != N: 
-        some_list.extend(map(int, input().split()))
+    while True:
+        values = input().split()
+        try:
+            int_values = map(int, values)
+            if len(list(int_values)) == N:
+                some_list.extend(int_values)
+                break
+        except ValueError:
+            print('Only integer is allowed! Try again! ')
 
     first_conditional = all(num >= 0 for num in some_list)
     values = [list(str(value)) for value in some_list]

@@ -1,4 +1,4 @@
-def countApplesAndOranges(s: int, t: int, a: int, apples_or_oranges: map):
+def countApplesAndOranges(s: int, t: int, a: int, apples_or_oranges: map) -> None:
     print(sum(1 for location in apples_or_oranges if a + location in range(s, t+1)))
 
 if __name__ == '__main__':
