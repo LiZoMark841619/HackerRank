@@ -1,24 +1,38 @@
 import operator
 
+class Valids:
+    number_of_instances = 0
+    
+    def set_a_list(self, length: int, min_value: int, max_value: int) -> None:
+        Valids.number_of_instances += 1
+        final = []
+        while True:
+            values = input().split()
+            try:
+                result = list(map(int, values))
+                conditional = (value in range(min_value, max_value+1) for value in result)
+                if len(result) == length and all(conditional):
+                    final.extend(result)
+                    self.__final = final
+                    return
+                elif len(result) != length:
+                    print(f'Your list is invalid! The number of values must be {length}! ')
+                else:
+                    print(f'Your values are out of range! They must be between {min_value} and {max_value}')
+            except ValueError:
+                print('Only integer is allowed! Try again! ')
+
+    def get_a_list(self) -> list:
+        return self.__final
+
 if __name__ == '__main__':
-    integers = []
-    while True:
-        try:
-            integers.extend(map(int, input().split()))
-            if len(integers) == 2 and all(value in range(1, 1001) for value in integers):
-                break
-        except ValueError:
-            print('Only integer is allowed! ')
-            
-    n, m = integers
+    valids = Valids()
+    valids.set_a_list(2, 1, 1000)
+    n, m = valids.get_a_list()
     arr = []
     for _ in range(n):
-        result = []
-        while True:
-            values = map(int, input().split())
-            result.extend(values) 
-            if len(result) == m and all(num in range(1001) for num in result):
-                break 
+        valids.set_a_list(m, 0, 1000)
+        result = valids.get_a_list()
         arr.append(result)
     
     while True:
@@ -28,5 +42,3 @@ if __name__ == '__main__':
     
     for value in sorted(arr, key=operator.itemgetter(k)):
         print(*value)
-
-                
