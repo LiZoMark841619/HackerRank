@@ -1,10 +1,26 @@
 import operator
 
-class Valids:
+class Valid:
     number_of_instances = 0
     
+    def set_a_number(self, min_value: int, max_value: int) -> None:
+        Valid.number_of_instances += 1
+        while True:
+            try:
+                valid_number = int(input())
+                if valid_number in range(min_value, max_value+1):
+                    self.__number = valid_number
+                    return
+                else:
+                    print(f'Out of range! Enter a number from {min_value} to {max_value}! ')
+            except ValueError:
+                print('Invalid value! Only integer is allowed! ')
+    
+    def get_a_number(self) -> int:
+        return self.__number
+    
     def set_a_list(self, length: int, min_value: int, max_value: int) -> None:
-        Valids.number_of_instances += 1
+        Valid.number_of_instances += 1
         final = []
         while True:
             values = input().split()
@@ -26,19 +42,18 @@ class Valids:
         return self.__final
 
 if __name__ == '__main__':
-    valids = Valids()
+    valids = Valid()
     valids.set_a_list(2, 1, 1000)
     n, m = valids.get_a_list()
+    
     arr = []
     for _ in range(n):
         valids.set_a_list(m, 0, 1000)
         result = valids.get_a_list()
         arr.append(result)
     
-    while True:
-        k = int(input())
-        if k in range(m):
-            break
+    valids.set_a_number(0, m)
+    k = valids.get_a_number()
     
     for value in sorted(arr, key=operator.itemgetter(k)):
         print(*value)
