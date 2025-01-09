@@ -22,7 +22,6 @@ def filter_mail(emails):
 if __name__ == '__main__':
     n = int(input())
     emails = [input() for _ in range(n)]
-
-filtered_emails = filter_mail(emails)
-filtered_emails.sort()
-print(filtered_emails)
+    filtered_emails = filter_mail(emails)
+    filtered_emails.sort()
+    print(filtered_emails)
