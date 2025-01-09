@@ -16,7 +16,7 @@ def fun(s: str) -> bool:
     web, ext = rest.split('.')
     return validate(username, user) == user and validate(website, web) == web and validate(extension, ext) == ext and len(ext) <= 3
     
-def filter_mail(emails):
+def filter_mail(emails: list) -> list:
     return list(filter(fun, emails))
 
 if __name__ == '__main__':
