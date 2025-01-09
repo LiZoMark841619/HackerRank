@@ -1,6 +1,6 @@
-from string import ascii_lowercase, ascii_uppercase
+from string import ascii_lowercase, ascii_uppercase, digits
 
-username = ascii_lowercase+ascii_uppercase+'0123456789_-'
+username = ascii_lowercase+ascii_uppercase+digits+'_-'
 website = username[:-2]
 extension = website[:-10]
 
