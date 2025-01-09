@@ -2,10 +2,9 @@ from itertools import combinations
 
 if __name__ == '__main__':
     while True:
-        inputs = list(input().upper().split())
-        S = inputs[0]
+        S, k = input().upper().split()
         try:
-            k = int(inputs[1])
+            k = int(k)
             if k in range(1, len(S)+1):
                 for counter in range(1, k+1):
                     combinations_ = combinations(sorted(S), counter)
