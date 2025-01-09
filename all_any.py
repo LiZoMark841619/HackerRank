@@ -3,9 +3,9 @@ if __name__ == '__main__':
     while True:
         value = input('Set a value between 1 and 1000! ')
         try:
-            int_value = int(value)
-            if int_value in range(1, 1001):
-                N += int_value
+            value = int(value)
+            if value in range(1, 1001):
+                N += value
                 break
             else:
                 print('Out of range! ')
@@ -14,10 +14,10 @@ if __name__ == '__main__':
             
     some_list: list[int] = []
     while True:
-        values = input().split()
+        values = input(f'Create a list! Its length must be {value}! ').split()
         try:
-            int_values = map(int, values)
-            if len(list(int_values)) == N:
+            int_values = list(map(int, values))
+            if len(int_values) == N:
                 some_list.extend(int_values)
                 break
         except ValueError:
