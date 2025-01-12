@@ -16,7 +16,7 @@ def main():
 
     result = []
     for i in range(K):
-        values = get_valid_input(f"Enter the list of integers for list {i+1}: ", lambda x: len(x) > 1 and 1 <= x[0] <= 7 and all(1 <= v <= 10**9 for v in x[1:]))
+        values = get_valid_input(f"Enter the list of integers for list {i+1}: ", lambda x: len(x) == 1 + x[0] and 1 <= x[0] <= 7 and all(1 <= v <= 10**9 for v in x[1:]))
         result.append(values[1:])
 
     max_value = max(sum(x**2 for x in combo) % M for combo in product(*result))
