@@ -9,9 +9,16 @@ def get_valid_number(min_value: int, max_value: int) -> int:
         except ValueError:
             print('Invalid value! Try again with iteger! ')
 
-def deque_updating(some_deque: deque, max_length: int) -> deque:
-    while len(some_deque) != max_length:
-        some_deque.extend(map(int, input().split()))
+def make_a_deque(expected_length: int = 1) -> deque:
+    some_deque:deque[int] = deque()
+    while True:
+        try:
+            values = list(map(int, input().split()))
+            if len(values) == expected_length:
+                some_deque.extend(values)
+                break
+        except ValueError:
+            print('Invalid input. Please enter integers only.')
     return some_deque
 
 def pop_left_right(some_deque: deque, empty: deque) -> deque:
@@ -22,10 +29,9 @@ def pop_left_right(some_deque: deque, empty: deque) -> deque:
 if __name__ == '__main__':
     T = get_valid_number(1, 5)
     for _ in range(T):
-        some_deque:deque[int] = deque()
+        number_of_cubes = get_valid_number(1, 10**5)
+        some_deque = make_a_deque(number_of_cubes)
         empty:deque[int] = deque()
-        n = get_valid_number(1, 10**5)
-        updated_deque = deque_updating(some_deque, n)
-        max_value, min_value = max(updated_deque), min(updated_deque)
-        result = pop_left_right(updated_deque, empty)
+        max_value, min_value = max(some_deque), min(some_deque)
+        result = pop_left_right(some_deque, empty)
         print('Yes' if result[0] == max_value and result[-1] == min_value else 'No')
