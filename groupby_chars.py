@@ -6,5 +6,5 @@ if __name__ == '__main__':
         if len(S) in range(1, 10**4+1):
             break
             
-    final = [(len(list(v)), int(k)) for k, v in groupby(S)]
+    final = [(len(list(v)), k) for k, v in groupby(S)]
     print(*final, sep=' ')
