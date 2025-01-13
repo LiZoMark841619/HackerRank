@@ -1,8 +1,6 @@
-from string import ascii_lowercase, ascii_uppercase, digits
+from string import ascii_lowercase as lowers,  ascii_uppercase as uppers, digits
 
-username = ascii_lowercase+ascii_uppercase+digits+'_-'
-website = username[:-2]
-extension = website[:-10]
+username_chars, website_chars, extension_chars  = lowers+uppers+digits+'_-', lowers+uppers+digits, lowers+uppers
 
 def validate(valid_chars: str, unexamined_string: str) -> str:
     return ''.join(list(filter(lambda x: x in valid_chars, unexamined_string)))
@@ -14,14 +12,14 @@ def fun(s: str) -> bool:
     if '.' not in rest[-4:]:
         return False
     web, ext = rest.split('.')
-    return validate(username, user) == user and validate(website, web) == web and validate(extension, ext) == ext and len(ext) <= 3
-    
+    conds = validate(username_chars, user) == user, validate(website_chars, web) == web, validate(extension_chars, ext) == ext
+    return len(ext) <= 3 and all(conds)
+
 def filter_mail(emails: list) -> list:
     return list(filter(fun, emails))
 
 if __name__ == '__main__':
-    n = int(input())
-    emails = [input() for _ in range(n)]
+    emails = [input() for _ in range(int(input()))]
     filtered_emails = filter_mail(emails)
     filtered_emails.sort()
     print(filtered_emails)
