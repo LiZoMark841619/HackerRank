@@ -22,7 +22,7 @@
 
 #better solution after understanding the problem
 def sorting_strings(some_string: str) -> str:
-    some_string = list(S)   
+    some_string = list(some_string)   
     some_string.sort(key=lambda x: (x.isdigit(), x.isupper(), x))
     only_numbers = list(filter(lambda x: x.isdigit(), some_string))
     only_letters = list(filter(lambda x: x.isalpha(), some_string))

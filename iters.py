@@ -1,9 +1,10 @@
 from string import ascii_lowercase
 from itertools import combinations
 
-N = 0
-while N not in range(1, 11):
-    N += int(input())
+while True:
+    N = int(input())
+    if N in range(1, 11):
+        break
 
 string_list: list[str] = []
 while len(string_list) != N:
@@ -11,10 +12,11 @@ while len(string_list) != N:
         if value not in ascii_lowercase:
             continue
         string_list.append(value)
-
-K = 0
-while K not in range(1, N+1):
-    K += int(input())
+        
+while True:
+    K = int(input())
+    if K in range(1, N+1):
+        break
 
 total_combinations = 0
 target_combinations = 0
