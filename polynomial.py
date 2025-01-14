@@ -14,4 +14,4 @@ fin = ''
 for value in result:
     fin += ''.join(value)
 
-print(True if eval(fin) == k else False)
+print(eval(fin) == k)
