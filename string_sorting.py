@@ -21,15 +21,25 @@
 #     print(''.join(sort_odd_before_even(list_string)))
 
 #better solution after understanding the problem
+from typing import TypeVar
+
+function = TypeVar('function')
+
+def get_valid_input(prompt: str, condition: function) -> str:
+    while True:
+        values = input(prompt)
+        if condition(values):
+            return values
+
 def sorting_strings(some_string: str) -> str:
     some_string = list(some_string)   
     some_string.sort(key=lambda x: (x.isdigit(), x.isupper(), x))
     only_numbers = list(filter(lambda x: x.isdigit(), some_string))
-    only_letters = list(filter(lambda x: x.isalpha(), some_string))
+    only_letters = [char for char in some_string if char.isalpha()]
     odds = list(filter(lambda x: int(x) % 2 == 1, only_numbers))
-    evens = list(filter(lambda x: int(x) % 2 == 0, only_numbers))
+    evens = [num for num in only_numbers if num not in odds]
     return ''.join(only_letters+odds+evens)
     
 if __name__ == '__main__':
-    S = input()
+    S = get_valid_input('', lambda x: len(x) in range(1, 1000))
     print(sorting_strings(S))
