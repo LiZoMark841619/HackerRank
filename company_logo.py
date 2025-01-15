@@ -1,5 +1,5 @@
 from collections import Counter
-            
+
 def get_valid_string(prompt, condition) -> str:
     while True:
         s = input(prompt)
