@@ -12,7 +12,7 @@ while True:
         print('Invalid input! Try again! ')
     
 column_names = input('Enter the column names: ').split()
-Student = namedtuple('Student', column_names)
+Student = namedtuple('Student', column_names or 'ID MARKS NAME CLASS'.split())
 
 marks = []
 for _ in range(N):
@@ -30,8 +30,5 @@ for _ in range(N):
             marks.append(stu.MARKS)
             break
 
-total = 0
-for value in marks:
-    total += int(value)
-
+total = sum(int(value) for value in marks)
 print(total/N)
